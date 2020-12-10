@@ -1,0 +1,243 @@
+:root {
+	--color-0: #ffffff; /*white*/
+	--color-1: #1c3147; /*dark blue*/
+	--color-2: #f8c06a; /*yellow*/
+	--color-3: #adcfc9; /*blue*/
+	--color-4: #ef7670; /*pink*/
+	--color-4--dark: #df6c66; /*dark pink*/
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+html,
+body {
+	min-height: 100vh;
+}
+
+body {
+	background-color: var(--color-body-bg);
+	font-family: 'Roboto', sans-serif;
+}
+
+.note {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.poster {
+	background-color: var(--color-3);
+	color: var(--color-1);
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	line-height: 1;
+	min-height: 50vw;
+	min-width: 40rem;
+}
+
+.poster p {
+	font-size: 1.5em;
+	font-family: 'Lato:ital',sans-serif;
+	line-height: 1.5;
+	max-width: 45ch;
+}
+
+.poster p + p {
+	margin-top: 1rem;
+}
+
+.poster__block1 {
+	background-color: var(--color-2);
+	display: grid;
+	grid-column: 1/2;
+	grid-row: 1/-1;
+	place-items: center right;
+}
+
+.poster__block2 {
+	display: grid;
+	grid-column: 2/-1;
+	grid-row: 1/2;
+	padding: 5vw;
+	place-items: end left;
+}
+
+.poster__block3 {
+	display: grid;
+	grid-column: 2/-1;
+	grid-row: 2/-1;
+	padding: 5vw;
+	padding-left: calc(16.5vw + 5vw);
+	color: #1c3147;
+}
+
+@keyframes zoomFlare {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes rotateFlare {
+	0% {
+		transform: rotate(-180deg);
+	}
+
+	100% {
+		transform: rotate(-90deg);
+	}
+}
+
+.poster__flare {
+	--size: 33.33333vw;
+
+	animation: zoomFlare 0.5s forwards 0.2s;
+	animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	background-color: transparent;
+	border-radius: 50%;
+	height: var(--size);
+	overflow: hidden;
+	right: calc((var(--size) * -1) / 2);
+	transform: scale(0);
+	width: var(--size);
+}
+
+.poster__flare::before,
+.poster__flare::after {
+	background-color: rgba(0, 0, 0, 0.5);
+	background-color: var(--color-1);
+	content: "";
+	display: inline-block;
+	height: 100%;
+	position: absolute;
+	transform-origin: center right;
+	width: 50%;
+}
+
+.poster__flare::before {}
+
+.poster__flare::after {
+	animation: rotateFlare 0.25s forwards 1s;
+	animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	transform: rotate(-180deg);
+}
+
+@keyframes slideText {
+	from {
+		transform: translateY(1em);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+.poster__title {
+	font-size: 2.5em;
+	color: #1c3147;
+	font-family: 'Lato:ital',sans-serif;
+	text-transform: uppercase;
+}
+
+.poster__title span {
+	display: block;
+}
+
+.poster__title > span {
+	overflow: hidden;
+}
+
+.poster__title span span {
+	animation: slideText 0.2s forwards;
+	transform: translateY(1em);
+}
+
+.poster__title span:nth-child(1) span {
+	animation-delay: 1.5s;
+}
+
+.poster__title span:nth-child(2) span {
+	animation-delay: 1.7s;
+}
+
+.poster__title span:nth-child(3) span {
+	animation-delay: 1.9s;
+}
+
+.cta {
+	background-color: var(--color-4);
+	border: 1px solid var(--color-4--dark);
+	border-radius: 3px;
+	box-shadow: 
+		0 0.125em 0.25em rgba(0, 0, 0, 0.1),
+		0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+	color: var(--color-0);
+	display: inline-block;
+	line-height: 1;
+	padding: 1rem;
+	text-decoration: none;
+	transition: all ease-in-out 0.2s;
+}
+
+.cta:focus,
+.cta:hover {
+	background-color: var(--color-4--dark);
+	box-shadow: 
+		0 0.125em 0.25em rgba(0, 0, 0, 0.2),
+		0 0.25em 0.5em rgba(0, 0, 0, 0.2);
+}
+
+
+.loader {
+    border: 8px solid white;
+    border-radius: 50%;
+    border-top: 8px solid #f5e725;
+    border-right: 8px solid #f5e725;
+    border-left: 8px solid #f5e725;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+  }
+  
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+  #loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

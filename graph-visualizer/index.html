@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Graph Visualizer</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Andika+New+Basic:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;1,100&family=Roboto:wght@100&display=swap" rel="stylesheet">
+   
+</head>
+<body onload="myFunction()" style="margin:0;">
+	<div id="loader"></div>
+
+
+  <header class="poster">
+
+  <div class="poster__block1">
+    <figure class="poster__flare">
+      <img src="bottle.png" alt="">
+    </figure>
+  </div>
+
+  <div class="poster__block2">
+    <h1 class="poster__title">
+      <span><span>Graph</span></span>
+      <span><span>Visualizer</span></span>
+    </h1>
+  </div>
+
+  <div class="poster__block3">
+    <div class="copy">
+      <p>Click Below to initialize the Graph Visualizer</p>
+      <p>
+        <a href="#" class="cta">Initialize Visualizer</a>
+      </p>
+    </div>
+  </div>
+  
+
+</header>
+
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 1000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+</body>
+</html>
